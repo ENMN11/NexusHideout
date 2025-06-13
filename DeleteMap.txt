@@ -1,0 +1,2 @@
+NEXUSHIDEOUT = 30 -- This Is FPS In Game(Lock FPS)(Optimize Only When AFK With Kaitun Or One Click)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Wraith1vs11/Rejoin/refs/heads/main/FPS%20Boost"))()

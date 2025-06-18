@@ -70,7 +70,7 @@ getgenv().Key = "079a407d0e28b243a65af94c"
             ["Enabled"] = false, -- Auto Buy Fruit in Shop Mirage and Normal
             ["Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Gas-Gas"},
         },
-        ["Lock Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Venom-Venom","Control-Control","Dough-Dough","Yeti-Yeti","Gas-Gas","Shadow-Shadow","Mammoth-Mammoth","Gravity-Gravity","Sound-Sound","Blizzard-Blizzard","Rumble-Rumble","Portal-Portal","Creation-Creation","T-Rex-T-Rex"},
+        ["Lock Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Venom-Venom","Control-Control","Dough-Dough","Yeti-Yeti","Gas-Gas","Shadow-Shadow","Mammoth-Mammoth","Gravity-Gravity","T-Rex-T-Rex"},
         ["Webhook"] = {
             ["Enabled"] = false,
             ["WebhookUrl"] = "",

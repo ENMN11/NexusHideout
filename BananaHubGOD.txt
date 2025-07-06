@@ -1,5 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-getgenv().Key = "079a407d0e28b243a65af94c"
+getgenv().Key = "f6a5469c773ec765370f5254"
     getgenv().SettingFarm ={
         ["Hide UI"] = false,
         ["Reset Teleport"] = {
@@ -27,7 +27,7 @@ getgenv().Key = "079a407d0e28b243a65af94c"
             ["Skull Guitar"] = false,
             ["Mirror Fractal"] = false,
             ["Cursed Dual Katana"] = false,
-            ["Upgrade Race V2-V3"] = false,
+            ["Upgrade Race V2-V3"] = true,
             ["Auto Pull Lever"] = false,
             ["Shark Anchor"] = false, --- if have cdk,sg,godhuman
         },
@@ -38,8 +38,8 @@ getgenv().Key = "079a407d0e28b243a65af94c"
             ["Gravity Blade"]  = false,
         },
         ["Farm Fragments"] = {
-            ["Enabled"]  = false,
-            ["Fragment"] = 50000,
+            ["Enabled"]  = true,
+            ["Fragment"] = 25000,
         },
         ["Auto Chat"] = {
             ["Enabled"] = false,

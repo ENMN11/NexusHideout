@@ -356,4 +356,4 @@ while True:
             printed_done = True
     else:
         printed_done = False
-    time.sleep(10)
+    time.sleep(5)

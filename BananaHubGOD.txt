@@ -1,5 +1,7 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+
 loadstring(game:HttpGet("https://pastefy.app/jwI9u1EL/raw"))()
+
 getgenv().Key = "f6a5469c773ec765370f5254"
     getgenv().SettingFarm ={
         ["Hide UI"] = false,
@@ -28,7 +30,7 @@ getgenv().Key = "f6a5469c773ec765370f5254"
             ["Skull Guitar"] = false,
             ["Mirror Fractal"] = false,
             ["Cursed Dual Katana"] = false,
-            ["Upgrade Race V2-V3"] = true,
+            ["Upgrade Race V2-V3"] = false,
             ["Auto Pull Lever"] = false,
             ["Shark Anchor"] = false, --- if have cdk,sg,godhuman
         },
@@ -39,8 +41,8 @@ getgenv().Key = "f6a5469c773ec765370f5254"
             ["Gravity Blade"]  = false,
         },
         ["Farm Fragments"] = {
-            ["Enabled"]  = true,
-            ["Fragment"] = 25000,
+            ["Enabled"]  = false,
+            ["Fragment"] = 0,
         },
         ["Auto Chat"] = {
             ["Enabled"] = false,

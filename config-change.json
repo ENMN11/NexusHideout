@@ -1,5 +1,5 @@
 {
-    "race_ver": 3,
+    "race_ver": 1,
     "tier": 0,
     "god_human": true,
     "sanguine_art": false,
@@ -10,7 +10,7 @@
     "skull_guitar": false,
     "mirror_fractal": false,
     "valkyrie_helm": false,
-    "fragment": 25000,
+    "fragment": 0,
     "level": 2650,
     "bounty/honor": 0
 }

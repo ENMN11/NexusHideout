@@ -147,11 +147,11 @@ def loop_boost():
     while True:
         clear_ram_enhanced()
         boost_cpu_maxlock()
-        time.sleep(1.11)
+        time.sleep(1)
 
 def loop_clean():
     while True:
-        time.sleep(300)
+        time.sleep(60)
         init_clean()
 
 full_tune()

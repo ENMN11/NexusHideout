@@ -155,7 +155,7 @@ def loop_clean():
         init_clean()
 
 full_tune()
-print("Successfully Boosted, Optimized For Gaming, Please Do Not Turn Off Termux Vnd This Code")
+print("Successfully Boosted, Optimized For Gaming, Please Do Not Turn Off Termux And This Code")
 
 threading.Thread(target=loop_boost).start()
 threading.Thread(target=loop_clean).start()

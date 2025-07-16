@@ -4,10 +4,6 @@ task.spawn(function()
     pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/FPS.lua")))
 end)
 
-task.spawn(function()
-    pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/AddFriend.lua")))
-end)
-
 getgenv().Key = "f6a5469c773ec765370f5254"
     getgenv().SettingFarm ={
         ["Hide UI"] = false,

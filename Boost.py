@@ -108,42 +108,5 @@ def optimize():
     ]
     for d in dirs: s(f'rm -rf {d}/*')
 
-    handle_apps()
-
-    print("System Fully Optimized, Cleaned And Boosted.")
-
-def handle_apps():
-    to_disable = sorted(set([
-        "com.google.android.apps.nbu.files",
-        "com.google.android.dialer",
-        "com.android.providers.telephony"
-    ]))
-
-    to_uninstall = sorted(set([
-        "com.android.browser", "com.android.calendar", "com.android.deskclock", "com.android.email",
-        "com.android.launcher3", "com.android.printspooler", "com.android.protips",
-        "com.android.soundrecorder", "com.android.theme.font", "com.android.theme.icon",
-        "com.android.theme.wallpaper", "com.android.wallpaper.livepicker",
-        "com.miui.analytics", "com.miui.backup", "com.miui.bugreport", "com.miui.cleanmaster",
-        "com.miui.cloudbackup", "com.miui.cloudservice", "com.miui.cloudservice.sysbase",
-        "com.miui.compass", "com.miui.contentextension", "com.miui.daemon",
-        "com.miui.enbbs", "com.miui.fm", "com.miui.hybrid", "com.miui.hybrid.accessory",
-        "com.miui.miapppredict", "com.miui.micloudsync", "com.miui.miservice",
-        "com.miui.miwallpaper", "com.miui.notes", "com.miui.personalassistant",
-        "com.miui.player", "com.miui.screenrecorder", "com.miui.sysopt", "com.miui.translation.kingsoft",
-        "com.miui.translationservice", "com.miui.video", "com.miui.virtualsim",
-        "com.miui.voiceassist", "com.miui.weather", "com.miui.weather2",
-        "com.og.gamecenter", "com.og.launcher", "com.og.market", "com.og.toolcenter",
-        "com.xiaomi.ab", "com.xiaomi.account", "com.xiaomi.account.auth",
-        "com.xiaomi.glgm", "com.xiaomi.mipicks", "com.xiaomi.miplay_client", "com.xiaomi.mircs",
-        "com.xiaomi.pass", "com.xiaomi.payment", "com.xiaomi.simactivate.service",
-        "com.xiaomi.xmsf", "com.google.android.apps.nbu.files", "com.google.android.dialer", "com.android.providers.telephony"
-    ]))
-
-    for pkg in to_disable:
-        sp.run(["pm", "disable-user", "--user", "0", pkg], stdout=sp.DEVNULL, stderr=sp.DEVNULL)
-
-    for pkg in to_uninstall:
-        sp.run(["pm", "uninstall", "--user", "0", pkg], stdout=sp.DEVNULL, stderr=sp.DEVNULL)
-
 optimize()
+print("System Fully Optimized, Cleaned And Boosted.")

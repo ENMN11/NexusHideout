@@ -47,8 +47,8 @@ getgenv().Key = "f6a5469c773ec765370f5254"
             ["Fragment"] = 0,
         },
         ["Auto Chat"] = {
-            ["Enabled"] = true,
-            ["Text"] = "Nexus",
+            ["Enabled"] = false,
+            ["Text"] = "",
         },
         ["Auto Summon Rip Indra"] = false, --- auto buy haki and craft haki legendary 
         ["Select Hop"] = { -- 70% will have it

@@ -2,23 +2,34 @@ import os, subprocess as sp
 from glob import glob
 
 def w(p, v):
-    try: open(p, 'w').write(str(v))
-    except: pass
+    try:
+        with open(p, 'w') as f:
+            f.write(str(v))
+    except Exception as e:
+        pass
 
 def s(c):
-    try: sp.run(c, shell=True, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
-    except: pass
+    try:
+        sp.run(c, shell=True, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+    except Exception as e:
+        pass
 
 def kb():
-    try: return int(open('/proc/meminfo').read().split('MemTotal:')[1].split()[0])
-    except: return 0
+    try:
+        with open('/proc/meminfo') as f:
+            return int(f.read().split('MemTotal:')[1].split()[0])
+    except Exception as e:
+        return 0
 
 def run_command(cmd, check_success=False):
     try:
-        result = sp.run(cmd, stdout=sp.PIPE, stderr=sp.PIPE, text=True)
-        return result.returncode == 0 if check_success else result.stdout
-    except:
-        return False
+        result = sp.run(cmd, stdout=sp.PIPE, stderr=sp.PIPE, text=True, shell=True)
+        if check_success:
+            return result.returncode == 0
+        else:
+            return result.stdout.strip()
+    except Exception as e:
+        return False if check_success else ""
 
 def optimize():
     s('settings put global window_animation_scale 0')
@@ -38,46 +49,87 @@ def optimize():
     s(f'taskset -p 0x{m} $$')
 
     for x in glob('/sys/devices/system/cpu/cpu[0-9]*'):
-        w(x + '/online', 1)
-        w(x + '/cpufreq/scaling_governor', 'performance')
-        w(x + '/cpufreq/boost', 1)
+        cpu_path = x
+        w(cpu_path + '/online', 1)
+        w(cpu_path + '/cpufreq/scaling_governor', 'performance')
+        w(cpu_path + '/cpufreq/boost', 1)
+
         try:
-            f = int(open(x + '/cpufreq/cpuinfo_max_freq').read())
-            w(x + '/cpufreq/scaling_max_freq', f)
-            w(x + '/cpufreq/scaling_min_freq', f)
-        except: pass
+            with open(cpu_path + '/cpufreq/cpuinfo_max_freq') as f:
+                max_freq = int(f.read())
+            w(cpu_path + '/cpufreq/scaling_max_freq', max_freq)
+            w(cpu_path + '/cpufreq/scaling_min_freq', max_freq)
+        except Exception as e:
+            pass
 
-    for x in glob('/proc/irq/*/smp_affinity'): w(x, m)
-    for x in glob('/sys/devices/system/cpu/cpu*/cpuidle/state*/disable'): w(x, 1)
+    for x in glob('/proc/irq/*/smp_affinity'):
+        w(x, m)
 
-    for q in glob('/sys/block/*/queue'):
-        w(q + '/read_ahead_kb', 8192)
-        w(q + '/iostats', 0)
-        w(q + '/rq_affinity', 1)
-        w(q + '/nr_requests', 8192)
-        sc = q + '/scheduler'
-        if os.path.exists(sc):
-            for t in ['none', 'mq-deadline', 'kyber', 'noop']:
-                if t in open(sc).read(): w(sc, t); break
+    for x in glob('/sys/devices/system/cpu/cpu*/cpuidle/state*/disable'):
+        w(x, 1)
 
     w('/proc/sys/kernel/sched_autogroup_enabled', 0)
     w('/proc/sys/kernel/sched_boost', 1)
+    w('/proc/sys/kernel/sched_min_granularity_ns', 10000)
+    w('/proc/sys/kernel/sched_wakeup_granularity_ns', 20000)
+    w('/proc/sys/kernel/sched_latency_ns', 50000)
+    w('/proc/sys/kernel/perf_cpu_time_max_percent', 100)
+    w('/proc/sys/kernel/sched_migration_cost_ns', 1000)
+    w('/proc/sys/kernel/sched_nr_migrate', 256)
+    w('/proc/sys/kernel/nmi_watchdog', 0)
+    w('/proc/sys/kernel/hung_task_timeout_secs', 0)
+    w('/proc/sys/kernel/sched_child_runs_first', 0)
+    w('/proc/sys/kernel/sched_rt_runtime_ns', -1) # Disable real-time runtime limit
+    w('/proc/sys/kernel/sched_rt_period_ns', 1000000) # Small period for RT tasks
 
-    w('/proc/sys/vm/dirty_ratio', 5)
-    w('/proc/sys/vm/dirty_background_ratio', 2)
+    for q in glob('/sys/block/*/queue'):
+        w(q + '/read_ahead_kb', 1048576) # 1MB
+        w(q + '/iostats', 0)
+        w(q + '/rq_affinity', 2)
+        w(q + '/nr_requests', 1048576) # 1M requests
+
+        sc = q + '/scheduler'
+        if os.path.exists(sc):
+            with open(sc, 'r') as f:
+                available_schedulers = f.read()
+            for t in ['none', 'noop', 'mq-deadline', 'kyber']:
+                if t in available_schedulers:
+                    w(sc, t)
+                    break
+            else:
+                pass
+        w(q + '/nomerges', 1)
+        w(q + '/add_random', 0)
+
+    w('/proc/sys/fs/file-max', 67108864)
+    w('/proc/sys/fs/inotify/max_user_watches', 8388608)
+
+    w('/proc/sys/vm/dirty_ratio', 1)
+    w('/proc/sys/vm/dirty_background_ratio', 1)
     w('/proc/sys/vm/overcommit_memory', 1)
     w('/proc/sys/vm/overcommit_ratio', 100)
-    w('/proc/sys/vm/vfs_cache_pressure', 10)
-    w('/proc/sys/vm/min_free_kbytes', max(1048576, int(kb() * 0.6)))
+    w('/proc/sys/vm/vfs_cache_pressure', 0)
+    w('/proc/sys/vm/min_free_kbytes', int(kb() * 0.99999)) # Extremely high free memory
     w('/proc/sys/vm/swappiness', 0)
+    w('/proc/sys/vm/extra_free_kbytes', 16777216) # 16MB extra free
+    w('/proc/sys/vm/laptop_mode', 0)
+    w('/proc/sys/vm/page-cluster', 0)
+    w('/proc/sys/vm/oom_kill_allocating_task', 1)
+    w('/proc/sys/vm/panic_on_oom', 0)
+    w('/proc/sys/vm/stat_interval', 0)
+    w('/proc/sys/vm/page_lock_unfairness', 0)
+    w('/proc/sys/vm/zone_reclaim_mode', 0)
+    w('/proc/sys/vm/direct_swappiness', 0)
+    w('/proc/sys/vm/oom_dump_tasks', 0)
 
     w('/proc/sys/net/ipv4/tcp_congestion_control', 'bbr')
-    w('/proc/sys/net/core/rmem_max', 268435456)
-    w('/proc/sys/net/core/wmem_max', 268435456)
-    w('/proc/sys/net/core/netdev_max_backlog', 524288)
-    w('/proc/sys/net/core/somaxconn', 131072)
-    w('/proc/sys/net/ipv4/tcp_rmem', '4096 131072 268435456')
-    w('/proc/sys/net/ipv4/tcp_wmem', '4096 65536 268435456')
+    w('/proc/sys/net/core/rmem_max', 2147483647)
+    w('/proc/sys/net/core/wmem_max', 2147483647)
+    w('/proc/sys/net/core/netdev_max_backlog', 16777216)
+    w('/proc/sys/net/core/somaxconn', 4194304)
+    w('/proc/sys/net/core/optmem_max', 2097152)
+    w('/proc/sys/net/ipv4/tcp_rmem', '4096 1048576 2147483647')
+    w('/proc/sys/net/ipv4/tcp_wmem', '4096 1048576 2147483647')
     w('/proc/sys/net/ipv4/ip_local_port_range', '1024 65535')
     w('/proc/sys/net/ipv4/tcp_low_latency', 1)
     w('/proc/sys/net/ipv4/tcp_timestamps', 0)
@@ -87,11 +139,27 @@ def optimize():
     w('/proc/sys/net/ipv4/tcp_no_metrics_save', 1)
     w('/proc/sys/net/ipv4/tcp_fastopen', 3)
     w('/proc/sys/net/ipv4/tcp_tw_reuse', 1)
-    w('/proc/sys/net/ipv4/tcp_keepalive_time', 15)
+    w('/proc/sys/net/ipv4/tcp_keepalive_time', 1)
     w('/proc/sys/net/ipv4/tcp_keepalive_probes', 3)
-    w('/proc/sys/net/ipv4/tcp_keepalive_intvl', 10)
+    w('/proc/sys/net/ipv4/tcp_keepalive_intvl', 1)
     w('/proc/sys/net/ipv4/route/flush', 1)
     s('ip neigh flush all')
+
+    w('/proc/sys/net/ipv4/tcp_syncookies', 1)
+    w('/proc/sys/net/ipv4/tcp_max_syn_backlog', 4194304)
+    w('/proc/sys/net/ipv4/tcp_fin_timeout', 1)
+    w('/proc/sys/net/ipv4/conf/all/rp_filter', 0)
+    w('/proc/sys/net/ipv4/conf/default/rp_filter', 0)
+    w('/proc/sys/net/ipv4/icmp_echo_ignore_broadcasts', 1)
+    w('/proc/sys/net/ipv4/icmp_ignore_bogus_error_responses', 1)
+    w('/proc/sys/net/ipv4/conf/all/accept_source_route', 0)
+    w('/proc/sys/net/ipv4/conf/default/accept_source_route', 0)
+    s('ip -s -s neigh flush all')
+    w('/proc/sys/net/ipv4/tcp_sack', 1)
+    w('/proc/sys/net/ipv4/tcp_fack', 1)
+    w('/proc/sys/net/ipv4/tcp_dsack', 1)
+    w('/proc/sys/net/ipv4/tcp_frto', 1)
+    w('/proc/sys/net/ipv4/tcp_notsent_lowat', 32768) # Increased
 
     w('/proc/sys/vm/drop_caches', 3)
     w('/proc/sys/vm/compact_memory', 1)
@@ -106,7 +174,8 @@ def optimize():
         '/data/misc/traces', '/data/system/sync', '/data/system/netstats',
         '/data/system/batterystats',
     ]
-    for d in dirs: s(f'rm -rf {d}/*')
+    for d in dirs:
+        s(f'rm -rf {d}/*')
 
 optimize()
 print("System Fully Optimized, Cleaned And Boosted.")

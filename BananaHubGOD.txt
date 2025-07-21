@@ -2,6 +2,31 @@ repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
 
 task.spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/FPS.lua")))
 
+task.spawn(function()
+    local function setTrans(obj)
+        pcall(function()
+            obj.Transparency = 1
+            for _, d in next, obj:GetDescendants() do
+                pcall(function() d.Transparency = 1 end)
+            end
+        end)
+    end
+
+    for _, v in next, workspace:GetDescendants() do
+        pcall(function() v.Transparency = 1 end)
+    end
+
+    for _, v in next, getnilinstances() do
+        setTrans(v)
+    end
+
+    workspace.DescendantAdded:Connect(function(v)
+        task.spawn(function()
+            pcall(function() v.Transparency = 1 end)
+        end)
+    end)
+end)
+
 getgenv().Key = "f6a5469c773ec765370f5254"
     getgenv().SettingFarm ={
         ["Hide UI"] = false,

@@ -77,4 +77,4 @@ getgenv().Key = "f6a5469c773ec765370f5254"
             ["WebhookUrl"] = "",
         }
     }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()
+task.spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua")))

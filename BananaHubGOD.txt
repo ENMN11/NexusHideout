@@ -163,8 +163,8 @@ task.spawn(function()
     until Loaded == true
 
     pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/FPS.lua"))()
-        task.wait(1)
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/NexusHideout/refs/heads/main/TrackstatBF.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/FPS.lua"))()
+        setfpscap(10)
     end)
 end)

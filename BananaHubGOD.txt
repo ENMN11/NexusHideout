@@ -155,15 +155,11 @@ getgenv().Key = "079a407d0e28b243a65af94c"
         }
     }
 task.spawn(function()
-    local s1 = pcall(function()
+    local TrackstatBFHermanos = pcall(function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/NexusHideout/refs/heads/main/TrackstatBF.lua"))()
     end)
 
-    local s2 = pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/FPS.lua"))()
-    end)
-
-    if s1 and s2 then
+    if TrackstatBFHermanos then
         repeat
             pcall(function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()

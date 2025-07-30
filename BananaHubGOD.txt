@@ -155,15 +155,20 @@ getgenv().Key = "079a407d0e28b243a65af94c"
         }
     }
 task.spawn(function()
-    repeat
-        pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()
-        end)
-        task.wait(5)
-    until Loaded == true
-
-    pcall(function()
+    local s1 = pcall(function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/NexusHideout/refs/heads/main/TrackstatBF.lua"))()
+    end)
+
+    local s2 = pcall(function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ENMN11/Tool-Rejoin/refs/heads/main/FPS.lua"))()
     end)
+
+    if s1 and s2 then
+        repeat
+            pcall(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()
+            end)
+            task.wait(5)
+        until Loaded == true
+    end
 end)

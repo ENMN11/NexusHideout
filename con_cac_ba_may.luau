@@ -115,49 +115,43 @@ getgenv().Hermanos_Settings = {
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 task.spawn(function() pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/hermanos-dev/hermanos-script/main/main.lua"))) end)
 task.spawn(function() pcall(function()
-local g=game w=g.Workspace l=g.Lighting t=w.Terrain u=g:GetService("RunService") c=w.CurrentCamera
+local g=game w=g.Workspace l=g.Lighting t=w.Terrain u=g:GetService("RunService")
 u:Set3dRenderingEnabled(false) UserSettings():GetService("UserGameSettings").MasterVolume=0
 sethiddenproperty(l,"Technology",2) sethiddenproperty(t,"Decoration",false)
 t.WaterWaveSize,t.WaterWaveSpeed,t.WaterReflectance,t.WaterTransparency=0,0,0,0
-l.GlobalShadows,l.FogEnd,l.Brightness=0 settings().Rendering.QualityLevel="Level01"
-pcall(function()
-    c.FieldOfView=1 c.NearPlaneZ=0 c.CameraSubject=nil
-    c.CFrame=c.CFrame c.CameraType="Scriptable"
-    if c:FindFirstChild("Shaky") then c.Shaky:Destroy() end
-    if c:FindFirstChildOfClass("Animation") then c:FindFirstChildOfClass("Animation"):Destroy() end
-    c:GetPropertyChangedSignal("CFrame"):Connect(function() c.CFrame=c.CFrame end)
-    c:GetPropertyChangedSignal("CameraSubject"):Connect(function() c.CameraSubject=nil end)
-    w:GetPropertyChangedSignal("CurrentCamera"):Connect(function() w.CurrentCamera=c end)
-end)
+l.GlobalShadows,l.FogEnd,l.Brightness=0,9e9,0 settings().Rendering.QualityLevel="Level01"
 local d=true
 for _,v in pairs(w:GetDescendants()) do local c=v.ClassName
-    if v:IsA("BasePart") and not v:IsA("MeshPart") or (v:IsA("MeshPart") and d) then
-        v.Material="Plastic" v.Reflectance=0 if c=="MeshPart" then v.TextureID=10385902758728957 end
-    elseif (c=="Decal" or c=="Texture") and d then v.Transparency=1
-    elseif c=="ParticleEmitter" or c=="Trail" then v.Lifetime=NumberRange.new(0)
-    elseif c=="Explosion" then v.BlastPressure,v.BlastRadius=1,1
-    elseif c=="Fire" or c=="SpotLight" or c=="Smoke" or c=="Sparkles" then v.Enabled=false
-    elseif c=="SpecialMesh" and d then v.TextureId=0
-    elseif c=="ShirtGraphic" and d then v.Graphic=1
-    elseif (c=="Shirt" or c=="Pants") and d then v[c.."Template"]=1
-    elseif c=="Animator" or c=="AnimationController" or c=="AnimationTrack" or c=="Animation" then v:Destroy()
-    end
+	if v:IsA("BasePart") and not v:IsA("MeshPart") or (v:IsA("MeshPart") and d) then
+		v.Material="Plastic" v.Reflectance=0 if c=="MeshPart" then v.TextureID=10385902758728957 end
+	elseif (c=="Decal" or c=="Texture") and d then v.Transparency=1
+	elseif c=="ParticleEmitter" or c=="Trail" then v.Lifetime=NumberRange.new(0)
+	elseif c=="Explosion" then v.BlastPressure,v.BlastRadius=1,1
+	elseif c=="Fire" or c=="SpotLight" or c=="Smoke" or c=="Sparkles" then v.Enabled=false
+	elseif c=="SpecialMesh" and d then v.TextureId=0
+	elseif c=="ShirtGraphic" and d then v.Graphic=1
+	elseif (c=="Shirt" or c=="Pants") and d then v[c.."Template"]=1
+	end
 end
-for _,e in pairs(l:GetChildren()) do local c=e.ClassName
-    if c:find("Effect") then e.Enabled=false end
+
+for _,e in pairs(l:GetChildren()) do
+	local c=e.ClassName
+	if c=="BlurEffect" or c=="SunRaysEffect" or c=="ColorCorrectionEffect" or c=="BloomEffect" or c=="DepthOfFieldEffect" then
+		e.Enabled=false
+	end
 end
+
 w.DescendantAdded:Connect(function(v) local c=v.ClassName
-    if v:IsA("BasePart") and not v:IsA("MeshPart") or (v:IsA("MeshPart") and d) then
-        v.Material="Plastic" v.Reflectance=0 if c=="MeshPart" then v.TextureID=10385902758728957 end
-    elseif (c=="Decal" or c=="Texture") and d then v.Transparency=1
-    elseif c=="ParticleEmitter" or c=="Trail" then v.Lifetime=NumberRange.new(0)
-    elseif c=="Explosion" then v.BlastPressure,v.BlastRadius=1,1
-    elseif c=="Fire" or c=="SpotLight" or c=="Smoke" or c=="Sparkles" then v.Enabled=false
-    elseif c=="SpecialMesh" and d then v.TextureId=0
-    elseif c=="ShirtGraphic" and d then v.Graphic=1
-    elseif (c=="Shirt" or c=="Pants") and d then v[c.."Template"]=1
-    elseif c=="Animator" or c=="AnimationController" or c=="AnimationTrack" or c=="Animation" then v:Destroy()
-    end
+	if v:IsA("BasePart") and not v:IsA("MeshPart") or (v:IsA("MeshPart") and d) then
+		v.Material="Plastic" v.Reflectance=0 if c=="MeshPart" then v.TextureID=10385902758728957 end
+	elseif (c=="Decal" or c=="Texture") and d then v.Transparency=1
+	elseif c=="ParticleEmitter" or c=="Trail" then v.Lifetime=NumberRange.new(0)
+	elseif c=="Explosion" then v.BlastPressure,v.BlastRadius=1,1
+	elseif c=="Fire" or c=="SpotLight" or c=="Smoke" or c=="Sparkles" then v.Enabled=false
+	elseif c=="SpecialMesh" and d then v.TextureId=0
+	elseif c=="ShirtGraphic" and d then v.Graphic=1
+	elseif (c=="Shirt" or c=="Pants") and d then v[c.."Template"]=1
+	end
 end)
 end) end)
 task.spawn(function() pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))) end)

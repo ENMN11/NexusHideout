@@ -119,4 +119,4 @@ getgenv().Config = {
         ["Black Screen"] = false,
     }
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/refs/heads/main/KaitunGAG.lua"))()
+if pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/refs/heads/main/KaitunGAG.lua"))() end) then setfpscap(6) end

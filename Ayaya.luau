@@ -86,7 +86,7 @@ task.spawn(function()
         end
     end
 end)
-task.spawn(function()local a=tostring(game.Players.LocalPlayer.UserId)..".m"while true do pcall(function()if isfile(a)then delfile(a)end; local s=false while not s do s,_=pcall(function()writefile(a,"https://discord.gg/FcEGmkNDDe")end) or task.wait(1)end end) task.wait(10) end end)
+task.spawn(function()local a=tostring(game.Players.LocalPlayer.UserId)..".main"while true do pcall(function()if isfile(a)then delfile(a)end; local s=false while not s do s,_=pcall(function()writefile(a,"https://discord.gg/FcEGmkNDDe")end) or task.wait(1)end end) task.wait(10) end end)
 task.spawn(function()
     local start = os.clock()
     local limit = 90

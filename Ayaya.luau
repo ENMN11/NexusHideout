@@ -1,12 +1,4 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-task.spawn(function()
-    local start = os.clock()
-    local limit = 300
-    while os.clock() - start < limit do
-        setfpscap(2)
-        task.wait(2)
-    end
-end)
 task.spawn(function()local a=tostring(game.Players.LocalPlayer.UserId)..".main"while true do pcall(function()if isfile(a)then delfile(a)end; local s=false while not s do s,_=pcall(function()writefile(a,"https://discord.gg/FcEGmkNDDe")end) or task.wait(1)end end) task.wait(10) end end)
 _G.Config = { UserID = "23bd740b-d966-4d71-9b91-6dc9806d07fd", discord_id = "1026799803155361832" , Note = "Pc", }  loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/gag"))()
 local t4n7y1w0zvm = game:GetService("Lighting")
@@ -342,4 +334,21 @@ getgenv().ConfigsKaitun = {
 	},
 }
 License = "H5OjLSSiXj8TLWm8hF9HAUkP6JkUjIoL"
-loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/9d50c8931b7c782e"))()
+while true do
+    local a = pcall(function()
+        loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/9d50c8931b7c782e"))()
+    end)
+    if a then
+        task.spawn(function()
+            local t = os.clock()
+            while os.clock() - t < 300 do
+                setfpscap(2)
+                task.wait(2)
+            end
+        end)
+        break
+    else
+        task.wait(5)
+    end
+end
+

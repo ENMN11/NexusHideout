@@ -246,6 +246,7 @@ getgenv().ConfigsKaitun = {
 			["Gorilla Chef"] = 1,
 		        ["Spaghetti Sloth"] = 1,
                         "Golden Goose",
+                        "Spriggan",
                         "Lobster Thermidor",
                         "French Fry Ferret",
 			"Kitsune", 

@@ -1,9 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
 task.spawn(function()local a=tostring(game.Players.LocalPlayer.UserId)..".main"while true do pcall(function()if isfile(a)then delfile(a)end; local s=false while not s do s,_=pcall(function()writefile(a,"https://discord.gg/FcEGmkNDDe")end) or task.wait(1)end end) task.wait(10) end end)
-getgenv().Setting =  {
-    ["Discord ID"] = "1122719312457764926",
-    ["Device Name"] = "Nexus"
-}
 loadstring(game:HttpGet("https://cdn.shouko.dev/RokidManager/neyoshiiuem/main/trackstat.lua"))()
 local t4n7y1w0zvm = game:GetService("Lighting")
 local b5k6r0quapx = workspace:FindFirstChildOfClass("Terrain")

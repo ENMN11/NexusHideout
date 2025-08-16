@@ -339,7 +339,7 @@ getgenv().ConfigsKaitun = {
 License = "H5OjLSSiXj8TLWm8hF9HAUkP6JkUjIoL"
 while true do
     local a = pcall(function()
-        loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/9d50c8931b7c782e"))()
+        loadstring(game:HttpGet("https://api.realaya.xyz/v1/files/l/98vt13x1h979yxngcvxbkjsq8hsw9rpw.lua"))()
     end)
     if a then
         task.spawn(function()

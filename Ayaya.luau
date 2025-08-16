@@ -1,5 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-task.spawn(function()local a=tostring(game.Players.LocalPlayer.UserId)..".main"while true do pcall(function()if isfile(a)then delfile(a)end; local s=false while not s do s,_=pcall(function()writefile(a,"https://discord.gg/FcEGmkNDDe")end) or task.wait(1)end end) task.wait(10) end end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/u400822/module/refs/heads/main/checkonline.lua"))()
 _G.Config = { UserID = "23bd740b-d966-4d71-9b91-6dc9806d07fd", discord_id = "1026799803155361832" , Note = "Pc", }  loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/gag"))()
 local t4n7y1w0zvm = game:GetService("Lighting")
 local b5k6r0quapx = workspace:FindFirstChildOfClass("Terrain")
@@ -91,6 +91,7 @@ getgenv().ConfigsKaitun = {
 	Beta_Fix_Data_Sync = true,
         NoDeletePlayer = false,
 	["Block Pet Gift"] = true,
+        Collect_Cooldown = 120,
 	["Low Cpu"] = true,
 	["Auto Rejoin"] = true,
 	["Rejoin When Update"] = true,
@@ -291,6 +292,9 @@ getgenv().ConfigsKaitun = {
                         "Raccoon",
 		},
 		LockPet_Weight = 999,
+		Ignore_Pet_Weight = {
+			"",
+		},
 		Instant_Sell = {		
                         "",
 		}

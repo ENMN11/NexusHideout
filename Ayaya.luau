@@ -161,57 +161,26 @@ getgenv().ConfigsKaitun = {
 		Locked = {
 		}
 	},
-	Events = {
-		["Cook Event"] = {
-			Minimum_Money = 5000000,
-			Rewards_Item = {
-				"Advanced Sprinkler",
-				"Gourmet Seed Pack",
-                                "Taco Fern Seed",
-                                "Culinarian Chest",
-                                "Lobster Thermidor",
-                                "Bone Blossom",
-                                "Sugarglaze",
-                                "Gourmet Egg",
-                                "Sunny-Side Chicken",
-			}
-		},
-		["Zen Event"] = {
-			["Restocking"] = { -- Minimumthing to restock
-				Max_Restocks_Price = 50000000,
-				Minimum_Money = 1000000,
-				Minimum_Chi = 200
-			},
-			["Doing"] = {
-				Minimum_Money = 5000000, -- minimum money to start play this event
-				First_Upgrade_Tree = 4,
-				Maximum_Chi = 250,
 
-				Skip_Fox = false, -- Skip The Middle Fox Trade (Corrupted Kitsune)
-				Skip_Corrupted_OldMan = false, -- Skip The OldMan Trade (Kodama)
-				-- If u need to skip Tranquill OldMan Set "First Upgrade Tree" To 0 and Max Chi To 99999
-			}
-		},
-		["Traveling Shop"] = {
-			"Loquat", 
-                        "Feijoa",  
-                        "Pitcher Plant",
-                        "Traveler's Fruit",
-                        "Pepper",
-                        "Hive Fruit",
-                        "Nectarine",
-                        "Serenity",
-                        "Soft Sunshine",
-		},
-		Craft = {
-			"",
-			"",
+	Events = {
+		["Bean Event"] = {
+			Minimum_Money = 100000000, -- minimum money to start play this event
 		},
 		Shop = {
-			"Zen Egg",
-			"Raiju",
+			"Sprout Seed Pack",
+			"Sprout Egg",
+			"Silver Fertilizer",
+			"Canary Melon",
+			"Amberheart",
+			"Spriggan",
 		},
-		Start_Do_Honey = 2000000 -- start trade fruit for honey at money
+		["Traveling Shop"] = {
+			"Bee Egg",
+		},
+		Craft = {
+			"Anti Bee Egg",
+		},
+		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
 	},
 
 	Gear = {

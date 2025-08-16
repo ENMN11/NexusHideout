@@ -205,16 +205,16 @@ getgenv().ConfigsKaitun = {
 
 	Eggs = {
 		Place = {
+                        "Sprout Egg",
 			"Bug Egg",
 			"Paradise Egg",
 			"Mythical Egg",
-                        "Gourmet Egg",
 		},
 		Buy = {
+                        "Sprout Egg",
 			"Bug Egg",
 			"Paradise Egg",
 			"Mythical Egg",
-                        "Gourmet Egg",
 		}
 	},
 
@@ -244,6 +244,7 @@ getgenv().ConfigsKaitun = {
 			["Sushi Bear"] = 1,
 			["Gorilla Chef"] = 1,
 		        ["Spaghetti Sloth"] = 1,
+                        "Golden Goose",
                         "Lobster Thermidor",
                         "French Fry Ferret",
 			"Kitsune", 

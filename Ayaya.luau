@@ -1,5 +1,9 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-_G.Config = { UserID = "23bd740b-d966-4d71-9b91-6dc9806d07fd", discord_id = "1026799803155361832" , Note = "Pc", }  loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/gag"))()
+getgenv().Setting =  {
+    ["Discord ID"] = "1122719312457764926",
+    ["Device Name"] = "Nexus"
+}
+loadstring(game:HttpGet("https://cdn.shouko.dev/RokidManager/neyoshiiuem/main/trackstat.lua"))()
 local t4n7y1w0zvm = game:GetService("Lighting")
 local b5k6r0quapx = workspace:FindFirstChildOfClass("Terrain")
 local m3q0jxswz2c = game:GetService("CoreGui")

@@ -169,6 +169,7 @@ getgenv().ConfigsKaitun = {
 		Shop = {
 			"Sprout Seed Pack",
 			"Sprout Egg",
+            "Mandrake",
 			"Silver Fertilizer",
 			"Canary Melon",
 			"Amberheart",

@@ -169,7 +169,7 @@ getgenv().ConfigsKaitun = {
 		Shop = {
 			"Sprout Seed Pack",
 			"Sprout Egg",
-            "Mandrake",
+                        "Mandrake",
 			"Silver Fertilizer",
 			"Canary Melon",
 			"Amberheart",
@@ -325,4 +325,3 @@ while true do
         task.wait(5)
     end
 end
-

@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-loadstring(game:HttpGet("https://raw.githubusercontent.com/u400822/module/refs/heads/main/checkonline.lua"))()
 _G.Config = { UserID = "23bd740b-d966-4d71-9b91-6dc9806d07fd", discord_id = "1026799803155361832" , Note = "Pc", }  loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/gag"))()
 local t4n7y1w0zvm = game:GetService("Lighting")
 local b5k6r0quapx = workspace:FindFirstChildOfClass("Terrain")

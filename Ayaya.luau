@@ -97,6 +97,7 @@ getgenv().ConfigsKaitun = {
 		["Limit"] = 250,
 		["Destroy Untill"] = 200,
 		["Safe Tree"] = {
+                        "Burning Bud",
                         "Maple Apple",
 			"Moon Blossom",
 			"Fossilight",

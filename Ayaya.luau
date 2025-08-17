@@ -226,6 +226,7 @@ getgenv().ConfigsKaitun = {
                                 ["Dairy Cow"] = { 1, 100, 2, true },
                                 ["Jackalope"] = { 1, 100, 3, true },
                                 ["Spriggan"] = { 1, 100, 4, true },
+                                ["Capybara"] = { 1, 100, 5, true },
 
 			},
 			["Limit Upgrade"] = 8,
@@ -234,6 +235,7 @@ getgenv().ConfigsKaitun = {
 				["Dairy Cow"] = { 1, 100, 2 },
 				["Jackalope"] = { 1, 100, 3 },
 				["Spriggan"] = { 1, 100, 4 },
+				["Capybara"] = { 1, 100, 5 },
 			},
 		},
                 Unfavorite_AllPet = true,
@@ -244,6 +246,7 @@ getgenv().ConfigsKaitun = {
                         ["Dairy Cow"] = 1,
                         ["Jackalope"] = 1,
                         ["Spriggan"] = 1,
+                        ["Capybara"] = 1,
                         "Golden Goose",
                         "Lobster Thermidor",
                         "French Fry Ferret",

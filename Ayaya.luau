@@ -307,20 +307,4 @@ getgenv().ConfigsKaitun = {
 	},
 }
 License = "H5OjLSSiXj8TLWm8hF9HAUkP6JkUjIoL"
-while true do
-    local a = pcall(function()
-        loadstring(game:HttpGet("https://api.realaya.xyz/v1/files/l/98vt13x1h979yxngcvxbkjsq8hsw9rpw.lua"))()
-    end)
-    if a then
-        task.spawn(function()
-            local t = os.clock()
-            while os.clock() - t < 300 do
-                setfpscap(2)
-                task.wait(2)
-            end
-        end)
-        break
-    else
-        task.wait(5)
-    end
-end
+loadstring(game:HttpGet("https://api.realaya.xyz/v1/files/l/98vt13x1h979yxngcvxbkjsq8hsw9rpw.lua"))()

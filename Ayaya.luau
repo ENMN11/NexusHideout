@@ -223,9 +223,9 @@ getgenv().ConfigsKaitun = {
 		["Upgrade Slot"] = {
 			["Pet"] = {
 				["Sunny-Side Chicken"] = { 1, 100, 1, true },
-                                ["Sushi Bear"] = { 1, 100, 2, true },
-                                ["Gorilla Chef"] = { 1, 100, 3, true },
-                                ["Spaghetti Sloth"] = { 1, 100, 4, true },
+                                ["Dairy Cow"] = { 1, 100, 2, true },
+                                ["Jackalope"] = { 1, 100, 3, true },
+                                ["Spriggan"] = { 1, 100, 4, true },
 
 			},
 			["Limit Upgrade"] = 8,

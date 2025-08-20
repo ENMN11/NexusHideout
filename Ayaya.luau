@@ -167,6 +167,7 @@ getgenv().ConfigsKaitun = {
 		["Bean Event"] = {
 			Minimum_Money = 100000000, -- minimum money to start play this event
 		},
+                MaxMoney_Restocks = 10000000,
 		Shop = {
 			"Sprout Seed Pack",
 			"Sprout Egg",

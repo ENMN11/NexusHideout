@@ -255,6 +255,7 @@ getgenv().ConfigsKaitun = {
                         ["Spriggan"] = 1,
                         ["Capybara"] = 1,
                         "Green Bean",
+                        "Griffin",
                         "Chicken Zombie",
                         "Apple Gazelle",
                         "Raiju",

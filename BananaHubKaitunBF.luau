@@ -85,7 +85,7 @@ task.spawn(function()
         end
     end
 end)
-getgenv().Key = "836c609ec9d1f2d3b36bd0bc"
+getgenv().Key = "ec52e23bce8f154ce29a2a4e"
     getgenv().SettingFarm ={
         ["Hide UI"] = true,
         ["Reset Teleport"] = {
